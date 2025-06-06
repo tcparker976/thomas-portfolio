@@ -1,0 +1,402 @@
+/* ===== Navigation Bar ===== */
+.nav-bar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  background-color: var(--nav-bg);
+  z-index: 1000;
+  -webkit-backface-visibility: hidden;
+  backface-visibility: hidden;
+  padding: 0.25em 0;
+  -webkit-box-shadow: 0 2px 4px var(--shadow-color);
+  box-shadow: 0 2px 4px var(--shadow-color);
+  border-bottom: 2px solid var(--nav-border);
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  display: flex;
+  justify-content: center;
+  min-height: 44px;
+}
+
+.nav-bar ul { 
+  list-style-type: none; 
+  margin: 0; 
+  padding: 0 2em; 
+  overflow: visible;
+  max-width: 1000px;
+  width: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-justify-content: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-align-items: center;
+  -ms-flex-align: center;
+  align-items: center;
+  -webkit-padding-start: 0;
+  -moz-padding-start: 0;
+  gap: 2.5em;
+}
+
+.nav-bar li { 
+  float: none;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  margin: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav-bar li:not(:last-child)::after {
+  content: '✧';
+  position: absolute;
+  right: -1.5em;
+  color: var(--text-color);
+  font-size: 0.9em;
+  opacity: 0.7;
+  -webkit-transform: rotate(45deg);
+  transform: rotate(45deg);
+  display: inline-block;
+  pointer-events: none;
+}
+
+.nav-bar li button {
+  display: block;
+  text-align: center;
+  padding: 0.5em 0.75em;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
+  position: relative;
+  -webkit-transition: all 0.2s ease;
+  -moz-transition: all 0.2s ease;
+  -o-transition: all 0.2s ease;
+  transition: all 0.2s ease;
+  border: 2px solid transparent;
+  border-radius: 6px;
+  overflow: hidden;
+  font-size: 1.5vw;
+  background-color: transparent;
+}
+
+.nav-bar li button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border: 2px solid var(--hover-border);
+  -webkit-transform: translate(-50%, -50%) rotate(45deg);
+  transform: translate(-50%, -50%) rotate(45deg);
+  -webkit-transition: all 0.3s ease;
+  -moz-transition: all 0.3s ease;
+  -o-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+  opacity: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.nav-bar li button:hover { 
+  background-color: rgba(0, 0, 0, 0.05);
+  -webkit-transform: translateZ(0) scale(1.05);
+  transform: translateZ(0) scale(1.05);
+}
+
+.nav-bar li button:active {
+  background-color: rgba(0, 0, 0, 0.1);
+  -webkit-transform: translateZ(0) scale(1);
+  transform: translateZ(0) scale(1);
+  -webkit-transition: all 0.1s ease;
+  -moz-transition: all 0.1s ease;
+  -o-transition: all 0.1s ease;
+  transition: all 0.1s ease;
+}
+
+.nav-bar li button:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+  background-color: rgba(0, 0, 0, 0.05);
+}
+
+/* ===== Dropdown Menu ===== */
+.nav-bar li.dropdown {
+  position: relative;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: var(--hover-bg);
+  border: 4px solid var(--text-color);
+  border-radius: 10px;
+  padding: 0.5vw;
+  min-width: 200px;
+  z-index: 1000;
+  -webkit-box-shadow: 5px 5px 0 var(--text-color);
+  box-shadow: 5px 5px 0 var(--text-color);
+  margin-top: 0.5vw;
+}
+
+.dropdown-menu::before {
+  content: '';
+  position: absolute;
+  top: -0.6vw;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 4px solid var(--text-color);
+  border-bottom: 0;
+  border-right: 0;
+  background-color: var(--hover-bg);
+  width: 0.8vw;
+  height: 0.8vw;
+  transform: translateX(-50%) rotate(45deg);
+  -webkit-transform: translateX(-50%) rotate(45deg);
+}
+
+.dropdown-item {
+  display: flex;
+  align-items: center;
+  padding: 0.75vw 1vw;
+  color: var(--text-color);
+  text-decoration: none;
+  transition: all 0.2s ease;
+  border-radius: 5px;
+  margin: 0.25vw 0;
+  font-size: 1.2vw;
+}
+
+.dropdown-item:hover {
+  background-color: rgba(0, 0, 0, 0.05);
+  transform: translate(-2px, -2px);
+  -webkit-box-shadow: 3px 3px 0 var(--text-color);
+  box-shadow: 3px 3px 0 var(--text-color);
+}
+
+.dropdown-icon {
+  width: 1.5vw;
+  height: 1.5vw;
+  margin-right: 0.75vw;
+  filter: drop-shadow(1px 1px 0 var(--text-color));
+}
+
+/* ===== Coming Soon Navigation Item ===== */
+.nav-bar li.coming-soon {
+  position: relative;
+}
+
+.nav-bar li button.coming-soon-button {
+  position: relative;
+  cursor: not-allowed;
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.nav-bar li button.coming-soon-button:hover {
+  transform: none;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.nav-bar li button.coming-soon-button:active {
+  transform: none;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.nav-bar li button.coming-soon-button:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.nav-label {
+  display: inline-block;
+  position: relative;
+}
+
+.coming-soon-badge {
+  position: absolute;
+  top: -0.3em;
+  right: -0.8em;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: var(--black);
+  font-size: 0.4em;
+  font-weight: bold;
+  padding: 0.2em 0.4em;
+  border-radius: 6px;
+  border: 1px solid var(--black);
+  box-shadow: 1px 1px 0 var(--black);
+  text-transform: uppercase;
+  letter-spacing: 0.2px;
+  font-family: var(--accent-font);
+  transform: rotate(-8deg);
+  animation: comingSoonPulse 3s ease-in-out infinite;
+  z-index: 10;
+  white-space: nowrap;
+}
+
+@keyframes comingSoonPulse {
+  0%, 100% {
+    transform: rotate(-8deg) scale(1);
+    box-shadow: 1px 1px 0 var(--black);
+  }
+  50% {
+    transform: rotate(-8deg) scale(1.05);
+    box-shadow: 2px 2px 0 var(--black);
+  }
+}
+
+/* Dark mode styles for coming soon */
+[data-theme="dark"] .nav-bar li button.coming-soon-button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .nav-bar li button.coming-soon-button:active {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .nav-bar li button.coming-soon-button:focus-visible {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .coming-soon-badge {
+  color: var(--black);
+  border-color: var(--black);
+  box-shadow: 1px 1px 0 var(--black);
+}
+
+/* Reduced motion support */
+@media (prefers-reduced-motion: reduce) {
+  .coming-soon-badge {
+    animation: none;
+    transform: rotate(-8deg);
+  }
+}
+
+/* Mobile responsive adjustments */
+@media (max-width: 600px) {
+  .coming-soon-badge {
+    font-size: 0.35em;
+    padding: 0.15em 0.3em;
+    top: -0.2em;
+    right: -0.6em;
+    border-radius: 4px;
+  }
+}
+
+/* ===== Mobile Navigation ===== */
+@media (max-width: 600px) {
+  .nav-bar {
+    display: none;
+  }
+}
+
+/* ===== Dark Mode Styles ===== */
+[data-theme="dark"] .nav-bar li button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .nav-bar li button:active {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+[data-theme="dark"] .nav-bar li button:focus-visible {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+/* ===== iPad Mini Optimizations ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .nav-bar {
+    padding: 0.5rem 0;
+    min-height: 56px;
+  }
+
+  .nav-bar ul {
+    padding: 0 1.5rem;
+    gap: 2rem;
+    max-width: 900px;
+  }
+
+  .nav-bar li button {
+    font-size: 1.1rem;
+    padding: 0.75rem 1rem;
+    min-height: 48px;
+    min-width: 48px;
+    border-radius: 8px;
+  }
+
+  .nav-bar li:not(:last-child)::after {
+    right: -1.25rem;
+    font-size: 0.8rem;
+  }
+
+  /* Dropdown optimizations for iPad Mini */
+  .dropdown-menu {
+    min-width: 220px;
+    padding: 0.75rem;
+    border-radius: 12px;
+    margin-top: 0.75rem;
+  }
+
+  .dropdown-item {
+    padding: 0.875rem 1rem;
+    font-size: 1rem;
+    border-radius: 8px;
+    margin: 0.375rem 0;
+    min-height: 48px;
+    align-items: center;
+  }
+
+  .dropdown-icon {
+    width: 1.25rem;
+    height: 1.25rem;
+    margin-right: 0.75rem;
+  }
+
+  /* Coming soon badge adjustments */
+  .coming-soon-badge {
+    font-size: 0.7rem;
+    padding: 0.25rem 0.5rem;
+    top: -0.5rem;
+    right: -0.75rem;
+  }
+}
+
+/* iPad Mini Portrait */
+@media (width: 768px) and (height: 1024px) and (orientation: portrait) {
+  .nav-bar ul {
+    gap: 1.5rem;
+    padding: 0 1rem;
+  }
+
+  .nav-bar li button {
+    font-size: 1rem;
+    padding: 0.625rem 0.875rem;
+  }
+}
+
+/* iPad Mini Landscape */
+@media (width: 1024px) and (height: 768px) and (orientation: landscape) {
+  .nav-bar ul {
+    gap: 2.5rem;
+    padding: 0 2rem;
+  }
+
+  .nav-bar li button {
+    font-size: 1.2rem;
+    padding: 0.75rem 1.125rem;
+  }
+} 

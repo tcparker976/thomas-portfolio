@@ -1,0 +1,21 @@
+/* ===== Thomas Portfolio - Main Stylesheet ===== */
+/* This file imports all modular CSS files in the correct order */
+
+/* ===== Global Styles (Foundation) ===== */
+@import './globals/reset.css';
+@import './globals/variables.css';
+@import './globals/fonts.css';
+
+/* ===== Component Styles ===== */
+@import './components/Navbar.css';
+@import './components/About.css';
+@import './components/TechStack.css';
+@import './components/Projects.css';
+@import './components/Contact.css';
+@import './components/ThemeToggle.css';
+@import './components/ErrorBoundary.css';
+
+/* ===== Utility Styles ===== */
+@import './utils/animations.css';
+@import './utils/accessibility.css';
+@import './utils/responsive.css'; 

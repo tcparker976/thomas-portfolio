@@ -1,0 +1,67 @@
+/* ===== CSS Custom Properties (Variables) ===== */
+:root {
+  /* ===== Layout Variables ===== */
+  --bubble-border: 25px;
+  --mobile-border: 18px;
+  
+  /* ===== Typography ===== */
+  --main-font: 'komika_textbold', Arial, Helvetica, sans-serif;
+  --accent-font: 'komika_axisregular', Arial, Helvetica, sans-serif;
+  
+  /* ===== Light Theme Colors (Default) ===== */
+  --text-color: #000000;
+  --bg-color: #F8F9FA;
+  --background-color: #F8F9FA;
+  --white: #fff;
+  --black: #000;
+  --card-bg: #FFFFFF;
+  --card-border: #000;
+  --hover-bg: #F5F5F5;
+  --hover-border: #000000;
+  --nav-bg: #F5F5F5;
+  --nav-border: #000;
+  --shadow-color: rgba(0, 0, 0, 0.2);
+  --shadow-dark: rgba(0, 0, 0, 0.3);
+  
+  /* ===== Computed Borders ===== */
+  --border-thick: solid var(--bubble-border) var(--card-border);
+  --border-thin: solid var(--mobile-border) var(--card-border);
+  --project-video-border: solid 16px var(--card-border);
+  --hover-font-scale: 2vw;
+}
+
+/* ===== Dark Theme Colors ===== */
+[data-theme="dark"] {
+  --text-color: #ffffff;
+  --bg-color: #1a1a2e;
+  --background-color: #1a1a2e;
+  --white: #2d2d44;
+  --black: #ffffff;
+  --card-bg: #2d2d44;
+  --card-border: #ffffff;
+  --hover-bg: #3a3a5c;
+  --hover-border: #ffffff;
+  --nav-bg: #2d2d44;
+  --nav-border: #ffffff;
+  --shadow-color: rgba(255, 255, 255, 0.1);
+  --shadow-dark: rgba(255, 255, 255, 0.2);
+}
+
+/* ===== Dark Mode Challenge/Solution Bubbles ===== */
+[data-theme="dark"] .challenge-bubble {
+  background: linear-gradient(135deg, #4a1e1e 0%, #6d2c2c 100%);
+  border-color: #8b4444;
+  box-shadow: 0 4px 8px rgba(139, 68, 68, 0.3);
+}
+
+[data-theme="dark"] .solution-bubble {
+  background: linear-gradient(135deg, #1e4a1e 0%, #2c6d2c 100%);
+  border-color: #448844;
+  box-shadow: 0 4px 8px rgba(68, 136, 68, 0.3);
+}
+
+[data-theme="dark"] .outcome-bubble {
+  background: linear-gradient(135deg, #4a3a1e 0%, #6d5a2c 100%);
+  border-color: #8b7744;
+  box-shadow: 0 4px 8px rgba(139, 119, 68, 0.3);
+} 

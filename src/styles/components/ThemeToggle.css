@@ -1,0 +1,563 @@
+/* ===== Theme Toggle Component ===== */
+.theme-toggle {
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1001;
+  background: var(--card-bg);
+  border: 3px solid var(--card-border);
+  border-radius: 50px;
+  padding: 0.8rem 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 4px 4px 0 var(--card-border), 0 4px 12px var(--shadow-color);
+  font-family: var(--accent-font);
+  overflow: hidden;
+  min-width: 120px;
+}
+
+.theme-toggle:hover {
+  transform: translate(-2px, -2px) scale(1.05);
+  box-shadow: 6px 6px 0 var(--card-border), 0 6px 16px var(--shadow-dark);
+}
+
+.theme-toggle:active {
+  transform: translate(0, 0) scale(1);
+  box-shadow: 3px 3px 0 var(--card-border), 0 2px 8px var(--shadow-color);
+}
+
+.theme-toggle:focus {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+.theme-toggle:focus:not(:focus-visible) {
+  outline: none;
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* ===== Toggle Container ===== */
+.toggle-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  position: relative;
+}
+
+/* ===== Toggle Icon ===== */
+.toggle-icon {
+  font-size: 1.2rem;
+  transition: all 0.3s ease;
+}
+
+.theme-toggle:hover .toggle-icon {
+  transform: scale(1.2) rotate(15deg);
+}
+
+/* ===== Toggle Text ===== */
+.toggle-text {
+  font-size: 0.9rem;
+  font-weight: bold;
+  color: var(--text-color);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+}
+
+/* ===== Comic Effect ===== */
+.comic-effect {
+  position: absolute;
+  top: -25px;
+  right: -10px;
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+  color: var(--black);
+  font-family: var(--accent-font);
+  font-size: 0.7rem;
+  font-weight: bold;
+  padding: 0.3rem 0.6rem;
+  border-radius: 50%;
+  border: 2px solid var(--card-border);
+  transform: rotate(15deg) scale(0);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  opacity: 0;
+  text-shadow: 1px 1px 0 rgba(255,255,255,0.8);
+}
+
+.theme-toggle:hover .comic-effect {
+  transform: rotate(15deg) scale(1);
+  opacity: 1;
+  animation: comicPop 0.6s ease-out;
+}
+
+/* ===== Comic Pop Animation ===== */
+@keyframes comicPop {
+  0% { 
+    transform: rotate(15deg) scale(0); 
+  }
+  50% { 
+    transform: rotate(15deg) scale(1.2); 
+  }
+  100% { 
+    transform: rotate(15deg) scale(1); 
+  }
+}
+
+/* ===== Dark Mode Specific Adjustments ===== */
+[data-theme="dark"] .comic-effect {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  color: var(--white);
+  text-shadow: 1px 1px 0 rgba(0,0,0,0.8);
+}
+
+/* ===== Tablet Styles ===== */
+@media (max-width: 768px) {
+  .theme-toggle {
+    top: 0.5rem;
+    right: 0.5rem;
+    padding: 0.6rem 1rem;
+    min-width: 100px;
+  }
+
+  .toggle-text {
+    font-size: 0.8rem;
+  }
+
+  .toggle-icon {
+    font-size: 1rem;
+  }
+
+  .comic-effect {
+    font-size: 0.6rem;
+    padding: 0.2rem 0.4rem;
+    top: -20px;
+    right: -8px;
+  }
+}
+
+/* ===== Mobile Styles ===== */
+@media (max-width: 480px) {
+  .theme-toggle {
+    padding: 0.5rem 0.8rem;
+    min-width: 80px;
+  }
+
+  .toggle-text {
+    display: none;
+  }
+
+  .toggle-icon {
+    font-size: 1.2rem;
+  }
+}
+
+/* ===== Accessibility Enhancements ===== */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle {
+    transition: none;
+  }
+
+  .theme-toggle:hover {
+    animation: none;
+  }
+
+  .toggle-icon {
+    transition: none;
+  }
+
+  .theme-toggle:hover .toggle-icon {
+    animation: none;
+    transform: none;
+  }
+
+  .comic-effect {
+    transition: none;
+  }
+
+  .theme-toggle:hover .comic-effect {
+    animation: none;
+  }
+
+  @keyframes comicPop {
+    0%, 50%, 100% { 
+      transform: rotate(15deg) scale(1); 
+    }
+  }
+}
+
+@media (prefers-contrast: high) {
+  .theme-toggle {
+    border-width: 4px;
+    box-shadow: 6px 6px 0 var(--card-border), 0 4px 16px var(--shadow-color);
+  }
+
+  .theme-toggle:hover {
+    box-shadow: 8px 8px 0 var(--card-border), 0 6px 20px var(--shadow-dark);
+  }
+
+  .theme-toggle:focus,
+  .theme-toggle:focus-visible {
+    outline: 3px solid var(--text-color);
+    outline-offset: 2px;
+  }
+
+  .comic-effect {
+    border-width: 3px;
+    text-shadow: 2px 2px 0 rgba(255,255,255,0.9);
+  }
+
+  [data-theme="dark"] .comic-effect {
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.9);
+  }
+}
+
+@media (hover: none) and (pointer: coarse) {
+  .theme-toggle {
+    padding: 1rem 1.5rem;
+    min-width: 120px;
+    min-height: 48px;
+  }
+
+  .toggle-text {
+    font-size: 1rem;
+  }
+
+  .toggle-icon {
+    font-size: 1.3rem;
+  }
+
+  .comic-effect {
+    font-size: 0.8rem;
+    padding: 0.4rem 0.8rem;
+    top: -30px;
+    right: -12px;
+  }
+
+  .theme-toggle:hover {
+    transform: none;
+    box-shadow: 4px 4px 0 var(--card-border), 0 4px 12px var(--shadow-color);
+  }
+
+  .theme-toggle:hover .toggle-icon {
+    transform: none;
+  }
+}
+
+/* ===== Print Styles ===== */
+@media print {
+  .theme-toggle {
+    display: none;
+  }
+}
+
+/* ===== Loading States ===== */
+.theme-toggle.loading {
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.theme-toggle.loading .toggle-icon {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ===== Error States ===== */
+.theme-toggle.error {
+  border-color: #ff4444;
+  background: rgba(255, 68, 68, 0.1);
+}
+
+.theme-toggle.error .toggle-icon {
+  color: #ff4444;
+}
+
+/* ===== Success States ===== */
+.theme-toggle.success .comic-effect {
+  background: linear-gradient(45deg, #4CAF50, #45a049);
+  animation: comicPop 0.6s ease-out;
+}
+
+[data-theme="dark"] .theme-toggle.success .comic-effect {
+  background: linear-gradient(45deg, #FFD700, #FFA500);
+}
+
+/* ===== High Performance Mode ===== */
+@media (prefers-reduced-motion: reduce) {
+  .theme-toggle.loading .toggle-icon {
+    animation: none;
+  }
+
+  .theme-toggle.success .comic-effect {
+    animation: none;
+  }
+}
+
+/* ===== Keyboard Navigation ===== */
+.theme-toggle:focus-within {
+  outline: 2px solid var(--text-color);
+  outline-offset: 2px;
+}
+
+/* ===== Screen Reader Support ===== */
+.theme-toggle .sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ===== RTL Support ===== */
+[dir="rtl"] .theme-toggle {
+  left: 1rem;
+  right: auto;
+}
+
+[dir="rtl"] .comic-effect {
+  left: -10px;
+  right: auto;
+}
+
+@media (max-width: 768px) {
+  [dir="rtl"] .theme-toggle {
+    left: 0.5rem;
+    right: auto;
+  }
+
+  [dir="rtl"] .comic-effect {
+    left: -8px;
+    right: auto;
+  }
+}
+
+/* ===== Theme Transition Effects ===== */
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.theme-transition * {
+  transition: inherit;
+}
+
+/* ===== Custom Theme Toggle Variants ===== */
+.theme-toggle.compact {
+  min-width: 60px;
+  padding: 0.5rem;
+}
+
+.theme-toggle.compact .toggle-text {
+  display: none;
+}
+
+.theme-toggle.expanded {
+  min-width: 150px;
+  padding: 1rem 1.5rem;
+}
+
+.theme-toggle.expanded .toggle-text {
+  font-size: 1rem;
+}
+
+/* ===== Animation Performance Optimizations ===== */
+.theme-toggle,
+.toggle-icon,
+.comic-effect {
+  will-change: transform;
+  backface-visibility: hidden;
+  perspective: 1000px;
+}
+
+.theme-toggle:not(:hover) {
+  will-change: auto;
+}
+
+/* ===== Safe Area Support (iOS) ===== */
+@supports (top: env(safe-area-inset-top)) {
+  .theme-toggle {
+    top: calc(1rem + env(safe-area-inset-top));
+    right: calc(1rem + env(safe-area-inset-right));
+  }
+
+  @media (max-width: 768px) {
+    .theme-toggle {
+      top: calc(0.5rem + env(safe-area-inset-top));
+      right: calc(0.5rem + env(safe-area-inset-right));
+    }
+  }
+
+  [dir="rtl"] .theme-toggle {
+    left: calc(1rem + env(safe-area-inset-left));
+    right: auto;
+  }
+
+  @media (max-width: 768px) {
+    [dir="rtl"] .theme-toggle {
+      left: calc(0.5rem + env(safe-area-inset-left));
+      right: auto;
+    }
+  }
+}
+
+/* ===== iPad Mini Optimizations ===== */
+@media (min-width: 768px) and (max-width: 1024px) {
+  .theme-toggle {
+    top: 1.25rem;
+    right: 1.25rem;
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    border-radius: 12px;
+    min-width: 120px;
+    min-height: 48px;
+    gap: 0.75rem;
+  }
+
+  .toggle-icon {
+    font-size: 1.1rem;
+    width: 1.25rem;
+    height: 1.25rem;
+  }
+
+  .toggle-text {
+    font-size: 0.85rem;
+    font-weight: 600;
+  }
+
+  .theme-toggle::before {
+    border-radius: 12px;
+  }
+
+  .theme-toggle:hover {
+    transform: translate(-2px, -2px) scale(1.02);
+  }
+
+  .theme-toggle:active {
+    transform: translate(0, 0) scale(0.98);
+  }
+
+  /* Loading and error states */
+  .theme-toggle.loading {
+    min-width: 100px;
+    padding: 0.75rem 0.875rem;
+  }
+
+  .theme-toggle.error {
+    min-width: 110px;
+    padding: 0.75rem 0.875rem;
+  }
+
+  /* RTL support for iPad Mini */
+  [dir="rtl"] .theme-toggle {
+    left: 1.25rem;
+    right: auto;
+  }
+}
+
+/* iPad Mini Portrait */
+@media (width: 768px) and (height: 1024px) and (orientation: portrait) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1rem;
+    padding: 0.625rem 0.875rem;
+    font-size: 0.85rem;
+    min-width: 100px;
+    min-height: 44px;
+  }
+
+  .toggle-icon {
+    font-size: 1rem;
+    width: 1.125rem;
+    height: 1.125rem;
+  }
+
+  .toggle-text {
+    font-size: 0.8rem;
+  }
+
+  [dir="rtl"] .theme-toggle {
+    left: 1rem;
+    right: auto;
+  }
+}
+
+/* iPad Mini Landscape */
+@media (width: 1024px) and (height: 768px) and (orientation: landscape) {
+  .theme-toggle {
+    top: 1rem;
+    right: 1.5rem;
+    padding: 0.75rem 1.125rem;
+    font-size: 0.95rem;
+    min-width: 130px;
+    min-height: 52px;
+    gap: 0.875rem;
+  }
+
+  .toggle-icon {
+    font-size: 1.2rem;
+    width: 1.375rem;
+    height: 1.375rem;
+  }
+
+  .toggle-text {
+    font-size: 0.9rem;
+  }
+
+  [dir="rtl"] .theme-toggle {
+    left: 1.5rem;
+    right: auto;
+  }
+}
+
+/* iPad Mini Safe Area Support */
+@supports (top: env(safe-area-inset-top)) {
+  @media (min-width: 768px) and (max-width: 1024px) {
+    .theme-toggle {
+      top: calc(1.25rem + env(safe-area-inset-top));
+      right: calc(1.25rem + env(safe-area-inset-right));
+    }
+
+    [dir="rtl"] .theme-toggle {
+      left: calc(1.25rem + env(safe-area-inset-left));
+      right: auto;
+    }
+  }
+
+  @media (width: 768px) and (height: 1024px) and (orientation: portrait) {
+    .theme-toggle {
+      top: calc(1rem + env(safe-area-inset-top));
+      right: calc(1rem + env(safe-area-inset-right));
+    }
+
+    [dir="rtl"] .theme-toggle {
+      left: calc(1rem + env(safe-area-inset-left));
+      right: auto;
+    }
+  }
+
+  @media (width: 1024px) and (height: 768px) and (orientation: landscape) {
+    .theme-toggle {
+      top: calc(1rem + env(safe-area-inset-top));
+      right: calc(1.5rem + env(safe-area-inset-right));
+    }
+
+    [dir="rtl"] .theme-toggle {
+      left: calc(1.5rem + env(safe-area-inset-left));
+      right: auto;
+    }
+  }
+} 
