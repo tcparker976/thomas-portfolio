@@ -2,18 +2,22 @@ import React from 'react';
 import Badge from '../Badge';
 import projectsContent from '../../content/projects';
 
-const ProjectCard = ({ project, videoRef }) => (
+const ProjectCard = ({ project, videoRef, isMobile }) => (
   <div className="project-card comic-dots-subtle">
     {/* Header with comic book styling */}
-    <div className="project-header">
-      <h2>{projectsContent.title}</h2>
-      <p className="project-subtitle">{projectsContent.subtitle}</p>
-      {project.featured && (
-        <div className="featured-badge">
-          <span className="featured-text">⭐ FEATURED ⭐</span>
+    {
+      !isMobile && (
+          <div className="project-header">
+          <h2>{projectsContent.title}</h2>
+          <p className="project-subtitle">{projectsContent.subtitle}</p>
+          {project.featured && (
+            <div className="featured-badge">
+              <span className="featured-text">⭐ FEATURED ⭐</span>
+            </div>
+          )}
         </div>
-      )}
-    </div>
+      )
+    }
 
     {/* Main project content */}
     <div className="project-content">
@@ -81,13 +85,16 @@ const ProjectCard = ({ project, videoRef }) => (
           <div className="outcomes-section">
             <h5>🎯 Key Outcomes</h5>
             <div className="outcomes-grid">
-              {project.outcomes.map((outcome, index) => (
+              {project.outcomes.slice(0, 2).map((outcome, index) => (
                 <div key={index} className="outcome-bubble">
                   <span className="outcome-text">{outcome}</span>
                   <div className="pow-effect">POW!</div>
                 </div>
               ))}
             </div>
+            {project.outcomes.length > 2 && (
+              <p className="outcomes-more">+ {project.outcomes.length - 2} more outcomes</p>
+            )}
           </div>
 
           {/* Technology Stack */}

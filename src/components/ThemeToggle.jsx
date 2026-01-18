@@ -9,18 +9,21 @@ const ThemeToggle = () => {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     
     if (savedTheme) {
-      setIsDark(savedTheme === 'dark');
-      document.documentElement.setAttribute('data-theme', savedTheme);
+      const nextTheme = savedTheme === 'dark' ? 'dark' : 'light';
+      setIsDark(nextTheme === 'dark');
+      document.documentElement.setAttribute('data-theme', nextTheme);
     } else if (prefersDark) {
       setIsDark(true);
       document.documentElement.setAttribute('data-theme', 'dark');
+    } else {
+      document.documentElement.setAttribute('data-theme', 'light');
     }
   }, []);
 
   const toggleTheme = () => {
     const newTheme = isDark ? 'light' : 'dark';
     setIsDark(!isDark);
-    document.documentElement.setAttribute('data-theme', newTheme === 'dark' ? 'dark' : '');
+    document.documentElement.setAttribute('data-theme', newTheme);
     localStorage.setItem('theme', newTheme);
   };
 

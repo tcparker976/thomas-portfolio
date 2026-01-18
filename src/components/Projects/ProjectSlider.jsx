@@ -40,16 +40,14 @@ function ProjectSlider({ projects, currentProject, onProjectChange, videoRef }) 
   const canSwipeLeft = currentProject > 0;
   const canSwipeRight = currentProject < projects.length - 1;
 
-  // Debounced mobile detection
+  // Debounced mobile viewport detection (avoid DevTools touch emulation)
   const checkMobile = useCallback(() => {
     if (resizeTimeoutRef.current) {
       clearTimeout(resizeTimeoutRef.current);
     }
     
     resizeTimeoutRef.current = setTimeout(() => {
-      const mobile = window.innerWidth <= 600 || 
-                    ('ontouchstart' in window) || 
-                    (navigator.maxTouchPoints > 0);
+      const mobile = window.innerWidth <= 600;
       setIsMobile(mobile);
     }, RESIZE_DEBOUNCE_MS);
   }, []);
@@ -345,7 +343,8 @@ function ProjectSlider({ projects, currentProject, onProjectChange, videoRef }) 
               aria-hidden={index !== currentProject}
             >
               <ProjectCard 
-                project={project} 
+                isMobile={isMobile}
+                project={project}
                 videoRef={index === currentProject ? videoRef : null}
               />
             </div>
