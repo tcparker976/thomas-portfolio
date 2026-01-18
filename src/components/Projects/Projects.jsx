@@ -10,12 +10,10 @@ function Projects() {
   const [isMobile, setIsMobile] = useState(false);
   const videoRef = useRef(null);
 
-  // Detect mobile device
+  // Detect mobile viewport only (avoid DevTools touch emulation)
   useEffect(() => {
     const checkMobile = () => {
-      const mobile = window.innerWidth <= 600 || 
-                    ('ontouchstart' in window) || 
-                    (navigator.maxTouchPoints > 0);
+      const mobile = window.innerWidth <= 600;
       setIsMobile(mobile);
     };
 
@@ -55,27 +53,28 @@ function Projects() {
 
   return (
     <section id="projects" className="projects-section">
-      {isMobile ? (
-        // Mobile: Use slider with swipe functionality
-        <ProjectSlider 
-          projects={projectsContent.projects}
-          currentProject={currentProject}
-          onProjectChange={goToProject}
-          videoRef={videoRef}
-        />
-      ) : (
-        // Desktop: Use original navigation with arrows
-        <>
-          <div className="projects-container">
-            <NavButton direction="prev" onClick={prevProject} />
-            <ProjectCard project={project} videoRef={videoRef} />
-            <NavButton direction="next" onClick={nextProject} />
-          </div>
-          <ProjectDots 
+      <div className="projects-container">
+        {isMobile ? (
+          <ProjectSlider 
+            projects={projectsContent.projects}
             currentProject={currentProject}
-            onDotClick={goToProject}
+            onProjectChange={goToProject}
+            videoRef={videoRef}
           />
-        </>
+        ) : (
+          <>
+            <NavButton direction="prev" onClick={prevProject} />
+            <ProjectCard project={project} isMobile={isMobile} videoRef={videoRef} />
+            <NavButton direction="next" onClick={nextProject} />
+          </>
+        )}
+      </div>
+      {!isMobile && (
+        <ProjectDots 
+          totalProjects={projectsContent.projects.length}
+          currentProject={currentProject}
+          onDotClick={goToProject}
+        />
       )}
     </section>
   );

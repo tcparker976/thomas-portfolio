@@ -1,6 +1,3 @@
-import './styles/main.css';
-// import './assets/stylesheet.css';
-// import './assets/stylesheet-mobile.css';
 import Navbar from './components/Navbar';
 import About from './components/About';
 import TechStack from './components/TechStack';
@@ -13,7 +10,6 @@ function App() {
   return (
     <ErrorBoundary>
       <div>
-        <ThemeToggle />
         <Navbar />
         <main>
           <About />
