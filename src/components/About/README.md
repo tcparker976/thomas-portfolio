@@ -35,13 +35,6 @@ Quick skills overview component with:
 - Interactive hover states
 - Categorized skill display
 
-### ComicGraphic.jsx
-Interactive comic-style graphic element featuring:
-- SVG animations
-- Rotating text overlay
-- Comic book visual effects
-- Responsive scaling
-
 ### AboutText.jsx
 Main about text content component including:
 - Detailed personal/professional description
@@ -70,9 +63,6 @@ The About section uses a two-column layout on desktop:
 │  └─────────────┘ │                      │
 │  ┌─────────────┐ │                      │
 │  │QuickSkills  │ │                      │
-│  └─────────────┘ │                      │
-│  ┌─────────────┐ │                      │
-│  │ComicGraphic │ │                      │
 │  └─────────────┘ │                      │
 └──────────────────┴──────────────────────┘
 ```

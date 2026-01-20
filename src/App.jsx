@@ -1,10 +1,12 @@
+import { Suspense, lazy } from 'react';
 import Navbar from './components/Navbar';
-import About from './components/About';
-import TechStack from './components/TechStack';
-import Projects from './components/Projects';
-import Contact from './components/Contact';
 import ThemeToggle from './components/ThemeToggle';
 import ErrorBoundary from './components/ErrorBoundary';
+
+const About = lazy(() => import('./components/About'));
+const TechStack = lazy(() => import('./components/TechStack'));
+const Projects = lazy(() => import('./components/Projects'));
+const Contact = lazy(() => import('./components/Contact'));
 
 function App() {
   return (
@@ -12,10 +14,12 @@ function App() {
       <div>
         <Navbar />
         <main>
-          <About />
-          <TechStack />
-          <Projects />
-          <Contact />
+          <Suspense fallback={null}>
+            <About />
+            <TechStack />
+            <Projects />
+            <Contact />
+          </Suspense>
         </main>
       </div>
     </ErrorBoundary>

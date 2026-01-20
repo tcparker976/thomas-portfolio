@@ -16,7 +16,13 @@ function Contact() {
               className="contact-method"
               aria-label={method.ariaLabel}
             >
-              <img src={method.icon} alt="" className="contact-icon" />
+              <img
+                src={method.icon}
+                alt=""
+                className="contact-icon"
+                loading="lazy"
+                decoding="async"
+              />
               <div className="contact-info">
                 <h3>{method.label}</h3>
                 <p>{method.description}</p>

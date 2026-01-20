@@ -2,7 +2,6 @@ import ProfilePhoto from './ProfilePhoto';
 import ProfessionalTagline from './ProfessionalTagline';
 import SocialLinks from './SocialLinks';
 import QuickSkills from './QuickSkills';
-import ComicGraphic from './ComicGraphic';
 import AboutText from './AboutText';
 
 function About() {
@@ -13,7 +12,6 @@ function About() {
         <ProfessionalTagline />
         <SocialLinks />
         <QuickSkills />
-        <ComicGraphic />
       </div>
       <AboutText />
     </section>

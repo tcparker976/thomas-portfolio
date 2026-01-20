@@ -2,7 +2,7 @@ import React from 'react';
 import Badge from '../Badge';
 import projectsContent from '../../content/projects';
 
-const ProjectCard = ({ project, videoRef, isMobile }) => (
+const ProjectCard = ({ project, videoRef, isMobile, isActive = true }) => (
   <div className="project-card comic-dots-subtle">
     {/* Header with comic book styling */}
     {
@@ -23,18 +23,24 @@ const ProjectCard = ({ project, videoRef, isMobile }) => (
     <div className="project-content">
       {/* Video Demo - Now full width at top */}
       <div className="project-video">
-        <video 
-          ref={videoRef}
-          className="demo-video" 
-          autoPlay 
-          loop 
-          muted 
-          playsInline
-          key={project.video}
-        >
-          <source src={project.video} type="video/mp4" />
-          Your browser does not support the video tag.
-        </video>
+        {isActive ? (
+          <video 
+            ref={videoRef}
+            className="demo-video" 
+            autoPlay 
+            loop 
+            muted 
+            playsInline
+            preload="metadata"
+            poster="/assets/project_poster.svg"
+            key={project.video}
+          >
+            <source src={project.video} type="video/mp4" />
+            Your browser does not support the video tag.
+          </video>
+        ) : (
+          <div className="demo-video-placeholder" aria-hidden="true"></div>
+        )}
         <div className="video-overlay">
           <span className="demo-label">🎬 LIVE DEMO</span>
         </div>

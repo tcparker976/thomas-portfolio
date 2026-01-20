@@ -25,14 +25,12 @@ function Projects() {
   useEffect(() => {
     if (videoRef.current) {
       videoRef.current.load();
-      console.log('Video source updated:', projectsContent.projects[currentProject].video);
     }
   }, [currentProject]);
 
   const nextProject = () => {
     setCurrentProject((prev) => {
       const next = (prev + 1) % projectsContent.projects.length;
-      console.log('Next project video:', projectsContent.projects[next].video);
       return next;
     });
   };
@@ -40,7 +38,6 @@ function Projects() {
   const prevProject = () => {
     setCurrentProject((prev) => {
       const next = (prev - 1 + projectsContent.projects.length) % projectsContent.projects.length;
-      console.log('Previous project video:', projectsContent.projects[next].video);
       return next;
     });
   };
@@ -64,7 +61,7 @@ function Projects() {
         ) : (
           <>
             <NavButton direction="prev" onClick={prevProject} />
-            <ProjectCard project={project} isMobile={isMobile} videoRef={videoRef} />
+            <ProjectCard project={project} isMobile={isMobile} videoRef={videoRef} isActive />
             <NavButton direction="next" onClick={nextProject} />
           </>
         )}

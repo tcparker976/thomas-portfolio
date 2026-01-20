@@ -86,12 +86,18 @@
 
 .nav-bar button:hover {
   transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-hover, 8px 8px 0 rgba(0, 0, 0, 0.2));
+  box-shadow: var(--shadow-hover, 6px 6px 0 rgba(0, 0, 0, 0.2));
 }
 
 .nav-bar button:active {
   transform: translate(0, 0);
   box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.2);
+}
+
+.nav-bar button:focus-visible,
+.nav-toggle:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .nav-bar button:disabled {
@@ -146,6 +152,15 @@
 
 .dropdown-item:hover {
   background: #f3f4f6;
+}
+
+.dropdown-item:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 2px;
+}
+
+[data-theme="dark"] .dropdown-item:hover {
+  background: #1f2937;
 }
 
 .dropdown-icon {

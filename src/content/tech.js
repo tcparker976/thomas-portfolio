@@ -243,9 +243,38 @@ const techContent = {
         },
       ]
     },
+    messaging: {
+      title: "Messaging & Eventing",
+      size: "medium",
+      priority: 6,
+      tools: [
+        { 
+          icon: "https://img.shields.io/badge/-FF6600?style=plastic&logo=rabbitmq&logoColor=white", 
+          label: "RabbitMQ", 
+          color: "#FF6600",
+          tooltip: {
+            experience: "Advanced",
+            years: "4+ years",
+            description: "Message broker for distributed fintech and healthcare systems",
+            projects: "8+ projects"
+          }
+        },
+        { 
+          icon: "https://img.shields.io/badge/-231F20?style=plastic&logo=apachekafka&logoColor=white", 
+          label: "Kafka", 
+          color: "#231F20",
+          tooltip: {
+            experience: "Advanced",
+            years: "2+ years",
+            description: "Event streaming with Avro schemas for data consistency",
+            projects: "5+ projects"
+          }
+        },
+      ]
+    },
     devops: {
       title: "Monitoring & Collaboration",
-      size: "medium",
+      size: "large",
       priority: 5,
       tools: [
         { 
@@ -334,35 +363,6 @@ const techContent = {
             years: "6+ years",
             description: "API development, testing, and integration",
             projects: "20+ projects"
-          }
-        },
-      ]
-    },
-    messaging: {
-      title: "Messaging & Eventing",
-      size: "medium",
-      priority: 6,
-      tools: [
-        { 
-          icon: "https://img.shields.io/badge/-FF6600?style=plastic&logo=rabbitmq&logoColor=white", 
-          label: "RabbitMQ", 
-          color: "#FF6600",
-          tooltip: {
-            experience: "Advanced",
-            years: "4+ years",
-            description: "Message broker for distributed fintech and healthcare systems",
-            projects: "8+ projects"
-          }
-        },
-        { 
-          icon: "https://img.shields.io/badge/-231F20?style=plastic&logo=apachekafka&logoColor=white", 
-          label: "Kafka", 
-          color: "#231F20",
-          tooltip: {
-            experience: "Advanced",
-            years: "2+ years",
-            description: "Event streaming with Avro schemas for data consistency",
-            projects: "5+ projects"
           }
         },
       ]
