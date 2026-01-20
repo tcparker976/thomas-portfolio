@@ -54,7 +54,7 @@
   border: 3px solid var(--card-border);
   border-radius: 12px;
   padding: var(--space-4);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-card);
 }
 
 [data-theme="dark"] .tech-panel {
@@ -133,7 +133,13 @@
   font-weight: 700;
   font-size: 0.8rem;
   text-transform: uppercase;
-  box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-card);
+}
+
+.badge:focus-visible,
+.badge-container:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 .badge-icon {
@@ -278,7 +284,7 @@
 }
 
 @media (max-width: 600px) {
-  .tech-container {
+    .tech-container {
     padding: clamp(1.25rem, 5vw, 2rem);
   }
 }

@@ -50,13 +50,18 @@
   padding: var(--space-4);
   text-decoration: none;
   color: var(--color-text);
-  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.12);
+  box-shadow: var(--shadow-card);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
 .contact-method:hover {
   transform: translate(-2px, -2px);
-  box-shadow: var(--shadow-hover, 8px 8px 0 rgba(0, 0, 0, 0.2));
+  box-shadow: var(--shadow-hover, 6px 6px 0 rgba(0, 0, 0, 0.2));
+}
+
+.contact-method:focus-visible {
+  outline: 3px solid var(--color-accent);
+  outline-offset: 3px;
 }
 
 [data-theme="dark"] .contact-method {

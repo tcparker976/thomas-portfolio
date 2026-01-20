@@ -346,6 +346,7 @@ function ProjectSlider({ projects, currentProject, onProjectChange, videoRef }) 
                 isMobile={isMobile}
                 project={project}
                 videoRef={index === currentProject ? videoRef : null}
+                isActive={index === currentProject}
               />
             </div>
           ))}
