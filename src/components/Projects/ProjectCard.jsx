@@ -31,7 +31,8 @@ const ProjectCard = ({ project, videoRef, isMobile, isActive = true }) => (
             loop 
             muted 
             playsInline
-            preload="none"
+            preload="metadata"
+            poster="/assets/project_poster.svg"
             key={project.video}
           >
             <source src={project.video} type="video/mp4" />
